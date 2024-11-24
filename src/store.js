@@ -13,23 +13,11 @@ const useStore = create(
 
             // Theme state
             theme: 'mocha', // Default theme
-            setTheme: (theme) => {
-                set(() => {
-                    // Change the body class dynamically
-                    document.body.classList.remove('latte', 'frappe', 'macchiato', 'mocha');
-                    document.body.classList.add(theme);
-                    return { theme };
-                });
-            },
+            setTheme: (theme) => set({ theme }),
         }),
         {
             name: 'relentnet-ls', // Key in localStorage
-            onRehydrateStorage: () => (state) => {
-                // Apply the saved theme to the body class when the app loads
-                if (state?.theme) {
-                    document.body.classList.add(state.theme);
-                }
-            },
+            partialize: (state) => ({ theme: state.theme }), // Persist only the theme
         }
     )
 );

@@ -1,7 +1,8 @@
 /* ./src/App.jsx */
 import React from 'react'
 import useStore from './store'
-import ThemeSwitcher from './components/ThemeSwitcher';
+import ThemeProvider from './components/ThemeProvider';
+import Navbar from './components/Navbar';
 
 const Counter = () => {
   const { count, increment, decrement, reset } = useStore();
@@ -21,11 +22,12 @@ const Counter = () => {
 function App() {
   return (
     <>
-      <div className='container mx-auto text-text'>
-        <h1>RelentNet</h1>
-        <Counter />
-        <ThemeSwitcher />
-      </div>
+      <ThemeProvider >
+        <Navbar />
+        <div className='container mx-auto text-text my-10'>       
+          <Counter />
+        </div>
+      </ThemeProvider >
     </>
   )
 }
