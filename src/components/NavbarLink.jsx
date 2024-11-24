@@ -17,7 +17,7 @@ const NavbarLink = ({ children, href, isActive, ...props }) => {
                 paddingBottom: "4px",
                 cursor: "pointer",
                 textDecoration: "none",
-                color: isActive ? "pink" : "inherit",
+                color: isActive ? "var(--pink)" : "inherit",
                 display: "inline-block", // Ensure the link is inline-block for proper spacing
             }}
             onMouseEnter={() => setIsHovered(true)}
@@ -33,7 +33,7 @@ const NavbarLink = ({ children, href, isActive, ...props }) => {
                     left: 0,
                     height: "2px",
                     width: "100%",
-                    background: "pink", // Pink underline
+                    background: "var(--pink)", // Pink underline
                     originX: 0,
                     scaleX: 0,
                 }}

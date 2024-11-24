@@ -1,25 +1,11 @@
-/* ./src/pages/home/Home.jsx */
-import React from 'react'
-import useStore from '../../store'
+import React, { Suspense } from 'react';
 import ThemeProvider from '../../components/ThemeProvider';
 import Navbar from '../../components/Navbar';
-import LoremIpsum from '../../components/LoremIpsum';
-import { motion, useScroll, useSpring } from "framer-motion";
+import HomeHeader from './HomeHeader';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
-const Counter = () => {
-    const { count, increment, decrement, reset } = useStore();
-
-    return (
-        <div className='text-subtext0 shadow rounded flex-1 text-center bg-surface0 w-1/12 mx-auto p-2'>
-            <h1 className='mb-2 text-text text-2xl'>Count: {count}</h1>
-            <div className='mb-2'>
-                <button className='mx-2 shadow hover:shadow-lg hover:text-yellow rounded text-2xl bg-surface1 w-8 hover:bg-surface2 hover:scale-105 transition duration-100' onClick={decrement}>-</button>
-                <button className='mr-2 shadow hover:shadow-lg hover:text-green rounded text-2xl bg-surface1 w-8 hover:bg-surface2 hover:scale-105 transition duration-100' onClick={increment}>+</button>
-            </div>
-            <button className='p-4 shadow hover:shadow-lg hover:text-red bg-surface1 rounded text-lg hover:bg-surface2 hover:scale-105 transition duration-100 mb-2' onClick={reset}>Reset</button>
-        </div>
-    );
-};
+const RelentlessResults = React.lazy(() => import('../../components/RelentlessResults'));
+const LoremIpsum = React.lazy(() => import('../../components/LoremIpsum'));
 
 function Home() {
     const { scrollYProgress } = useScroll();
@@ -31,19 +17,43 @@ function Home() {
 
     return (
         <>
-            <ThemeProvider >
+            <ThemeProvider>
+                {/* Navbar */}
                 <Navbar />
-                <div className='container mx-auto text-text my-96'>
-                    <Counter />
-                    <motion.div className="progress-bar bg-pink fixed h-2.5 origin-[0%] bottom-0 inset-x-0" style={{ scaleX }} />
-                    <h1>
-                        <code>useScroll</code> with spring smoothing
-                    </h1>
-                    <LoremIpsum />
+
+                {/* Responsive Page Header */}
+                <HomeHeader
+                    title="Empower"
+                    subtitle="your online vision."
+                    description="RelentNet offers custom web design, robust e-commerce platforms, and effective SEO strategies that align with your business goals, helping you build a powerful online presence."
+                    buttonText="Explore"
+                />
+
+                {/* Main Content */}
+                <div className="container mx-auto text-text">
+                    {/* Relentless Results Section */}
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <section>
+                            <RelentlessResults />
+                        </section>
+                    </Suspense>
+
+                    {/* Lorem Ipsum Section */}
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <section>
+                            <LoremIpsum />
+                        </section>
+                    </Suspense>
                 </div>
-            </ThemeProvider >
+
+                {/* Progress Bar */}
+                <motion.div
+                    className="progress-bar bg-pink fixed h-2.5 origin-[0%] bottom-0 inset-x-0"
+                    style={{ scaleX }}
+                />
+            </ThemeProvider>
         </>
-    )
+    );
 }
 
 export default Home;

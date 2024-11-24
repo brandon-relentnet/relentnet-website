@@ -1,5 +1,6 @@
 /* ./src/css/index.css */
 @import 'variables.css';
+@import 'fonts.css';
 
 @tailwind base;
 @tailwind components;
@@ -8,6 +9,33 @@
 body {
     background-color: var(--base);
     height: 100%;
-    transition: background-color 100ms ease;
-    font-family: var(--fontFamily);
+    transition: background-color 300ms ease;
+    font-family: 'Adam-Bold', sans-serif;
 }
+
+span, a, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Circular-STD', sans-serif;
+}
+
+a, span {
+    transform: translateZ(0); /* Trigger GPU rendering */
+    backface-visibility: hidden; /* Improve rendering */
+    -webkit-font-smoothing: antialiased; /* Smooth fonts */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.navbar-link {
+    will-change: transform, opacity;
+}
+
+/* Responsive Typography */
+.responsive-title {
+  @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold italic text-accent;
+}
+.responsive-subtitle {
+  @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-text;
+}
+.responsive-paragraph {
+  @apply max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl text-xs sm:text-sm text-subtext1 lg:text-lg xl:text-xl;
+}
+

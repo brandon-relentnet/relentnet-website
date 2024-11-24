@@ -6,6 +6,9 @@ export default {
       willChange: {
         'transform': 'transform',
       },
+      backgroundImage: {
+        'radial-custom': 'radial-gradient(circle at center, var(--mantle) 36%, rgba(var(--mantle-rgb), 0.1) 100%)',
+      },
       colors: {
         accent: 'var(--accent)',
         rosewater: 'var(--rosewater)',
