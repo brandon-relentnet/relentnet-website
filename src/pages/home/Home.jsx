@@ -4,8 +4,23 @@ import Navbar from '../../components/Navbar';
 import HomeHeader from './HomeHeader';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
-const RelentlessResults = React.lazy(() => import('../../components/RelentlessResults'));
+const RelentlessResults = React.lazy(() => import('./RelentlessResults'));
 const LoremIpsum = React.lazy(() => import('../../components/LoremIpsum'));
+const YourSuccess = React.lazy(() => import('./YourSuccess'));
+
+const buttonVariants = {
+    hover: {
+        scale: 1.1,
+        transition: {
+            type: "spring",
+            stiffness: 260,
+            damping: 15,
+        },
+    },
+    tap: {
+        scale: 0.9,
+    },
+};
 
 function Home() {
     const { scrollYProgress } = useScroll();
@@ -22,15 +37,25 @@ function Home() {
                 <Navbar />
 
                 {/* Responsive Page Header */}
-                <HomeHeader
-                    title="Empower"
-                    subtitle="your online vision."
-                    description="RelentNet offers custom web design, robust e-commerce platforms, and effective SEO strategies that align with your business goals, helping you build a powerful online presence."
-                    buttonText="Explore"
-                />
+                <Suspense fallback={<div>Loading...</div>}>
+                    <section>
+                        <HomeHeader
+                            buttonVariants={buttonVariants}
+                        />
+                    </section>
+                </Suspense>
 
                 {/* Main Content */}
                 <div className="container mx-auto text-text">
+                    {/* Your Success Section */}
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <section>
+                            <YourSuccess 
+                                buttonVariants={buttonVariants}
+                            />
+                        </section>
+                    </Suspense>
+
                     {/* Relentless Results Section */}
                     <Suspense fallback={<div>Loading...</div>}>
                         <section>

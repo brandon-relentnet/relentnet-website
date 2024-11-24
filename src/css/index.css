@@ -10,11 +10,6 @@ body {
     background-color: var(--base);
     height: 100%;
     transition: background-color 300ms ease;
-    font-family: 'Adam-Bold', sans-serif;
-}
-
-span, a, h1, h2, h3, h4, h5, h6 {
-    font-family: 'Circular-STD', sans-serif;
 }
 
 a, span {
@@ -30,12 +25,14 @@ a, span {
 
 /* Responsive Typography */
 .responsive-title {
-  @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold italic text-accent;
+  @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold;
 }
 .responsive-subtitle {
-  @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-text;
+  @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium;
 }
 .responsive-paragraph {
-  @apply max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl text-xs sm:text-sm text-subtext1 lg:text-lg xl:text-xl;
+  @apply max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl text-2xs sm:text-xs lg:text-sm xl:text-lg;
 }
-
+.responsive-pretitle {
+  @apply text-xs sm:text-sm lg:text-lg xl:text-xl;
+}
