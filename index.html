@@ -1,0 +1,59 @@
+<!doctype html>
+<html class="mocha" lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RelentNet | Tailored Web Solutions</title>
+
+  <style>
+    /* Preload critical theme styles */
+    html.mocha {
+      --base: #1e1e2e;
+      /* replace with actual value */
+      background: var(--base);
+    }
+  
+    html.macchiato {
+      --base: #24273a;
+      /* replace with actual value */
+      background: var(--base);
+    }
+  
+    html.frappe {
+      --base: #303446;
+      /* replace with actual value */
+      background: var(--base);
+    }
+  
+    html.latte {
+      --base: #eff1f5;
+      /* replace with actual value */
+      background: var(--base);
+    }
+  </style>
+  
+  <script>
+    (function () {
+      const ls = localStorage.getItem('relentnet-ls') || '{"state":{"theme":"mocha"}}';
+      try {
+        const parsedLS = JSON.parse(ls);
+        const theme = parsedLS?.state?.theme || 'mocha';
+        document.documentElement.classList.add(theme);
+      } catch (e) {
+        document.documentElement.classList.add('mocha');
+      }
+    })();
+  </script>
+  
+  <!-- Link CSS after theme is applied -->
+  <link rel="stylesheet" href="/src/css/index.css" />
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/pages/home/main.jsx"></script>
+</body>
+
+</html>

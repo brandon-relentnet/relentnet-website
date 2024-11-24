@@ -9,11 +9,11 @@ const ThemeProvider = ({ children }) => {
         const themes = ['latte', 'frappe', 'macchiato', 'mocha'];
 
         // Remove existing theme classes
-        document.body.classList.remove(...themes);
+        document.documentElement.classList.remove(...themes);
 
         // Add the current theme class
         if (theme) {
-            document.body.classList.add(theme);
+            document.documentElement.classList.add(theme);
         }
     }, [theme]);
 

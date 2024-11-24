@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 body {
-    background-color: var(--crust);
+    background-color: var(--base);
     height: 100%;
     transition: background-color 100ms ease;
     font-family: var(--fontFamily);
