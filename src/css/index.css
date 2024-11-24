@@ -8,7 +8,7 @@
 body {
     background-color: var(--crust);
     height: 100%;
-    transition: background-color .3s ease;
+    transition: background-color 100ms ease;
     font-family: var(--fontFamily);
 }
 
